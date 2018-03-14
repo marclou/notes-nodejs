@@ -28,15 +28,30 @@ module.exports = {
       notes.push(note);
       saveNotes(notes);
       return note;
-    } 
+    }
   },
-  getAll: () => {
-    console.log('Getting all notes');
+  getAllNotes: () => {
+    var notes = fetchNote();
+    if (notes.length > 0) {
+      return notes;
+    }
   },
   getNote: (title) => {
-      console.log(`Getting note ${title}`);
+    let notes = fetchNote();
+    let noteToRead = notes.filter(note => note.title === title);
+    if (noteToRead.length > 0) {
+      return noteToRead;
+    }
   },
   removeNote: (title) => {
-    console.log(`Remove note ${title}`);
+    let notes = fetchNote();
+    let newNotes = notes.filter(note => note.title !== title);
+
+    saveNotes(newNotes);
+    if (newNotes.length !== notes.length) {
+      return true;
+    } else {
+      return false;
+    }
   }
 };

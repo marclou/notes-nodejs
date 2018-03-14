@@ -18,11 +18,18 @@ if (command === 'add') {
     console.log('Note title already existing...');
   }
 } else if (command === 'list') {
-  notes.getAll();
+  let allNotes = notes.getAllNotes();
+  let message = allNotes ? allNotes : 'No notes yet';
+  console.log(message);
+
 } else if (command === 'read') {
-  notes.getNote(argv.title);
+  let note = notes.getNote(argv.title);
+  let message = note ? note : 'Invalid Title';
+  console.log(message);
 } else if (command === 'remove') {
-  notes.removeNote(argv.title);
+  let removedNote = notes.removeNote(argv.title);
+  let message = removedNote ? 'Note successfully removed' : 'Title does not exist';
+  console.log(message);
 } else {
   console.log('Command not recognized');
 }
