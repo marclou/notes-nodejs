@@ -1,4 +1,4 @@
-console.log('--- App started ---');
+console.log('--- App started ---\n\n');
 
 const _ = require('lodash');
 const yargs = require('yargs');
@@ -9,7 +9,14 @@ const command = process.argv[2];
 const argv = yargs.argv;
 
 if (command === 'add') {
-  notes.addNote(argv.title, argv.body);
+  var note = notes.addNote(argv.title, argv.body);
+  if (note) {
+    console.log('Note created ');
+    console.log('---');
+    console.log(`Title : ${note.title}, \nBody : ${note.body}`);
+  } else {
+    console.log('Note title already existing...');
+  }
 } else if (command === 'list') {
   notes.getAll();
 } else if (command === 'read') {

@@ -11,7 +11,7 @@ const fetchNote = () => {
 };
 
 const saveNotes = (notes) => {
-
+  fs.writeFileSync('notes.json', JSON.stringify(notes));
 };
 
 module.exports = {
@@ -26,10 +26,9 @@ module.exports = {
 
     if (duplicateNotes.length === 0) {
       notes.push(note);
-      fs.writeFileSync('notes.json', JSON.stringify(notes));
-    } else {
-      console.log('Duplicated title ...')
-    }
+      saveNotes(notes);
+      return note;
+    } 
   },
   getAll: () => {
     console.log('Getting all notes');
