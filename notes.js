@@ -2,7 +2,10 @@ module.exports = {
   addNote: (title, body) => {
     console.log(`Adding note : ${title}, ${body}`);
   },
-  addNumber: (a,b) => {
-    return a+b;
+  getAll: () => {
+    console.log('Getting all notes');
+  },
+  getNote: (title) => {
+      console.log(`Getting note ${title}`);
   }
 }
