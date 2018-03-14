@@ -1,15 +1,15 @@
 console.log('--- App started ---');
 
-const fs = require('fs');
-const os = require('os');
-const notes = require('./notes.js');
 const _ = require('lodash');
+const yargs = require('yargs');
+
+const notes = require('./notes.js');
 
 const command = process.argv[2];
-console.log(process.argv);
+const argv = yargs.argv;
 
 if (command === 'add') {
-
+  notes.addNote(argv.title, argv.body);
 } else if (command === 'list') {
 
 } else if (command === 'read') {
