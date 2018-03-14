@@ -7,5 +7,8 @@ module.exports = {
   },
   getNote: (title) => {
       console.log(`Getting note ${title}`);
+  },
+  removeNote: (title) => {
+    console.log(`Remove note ${title}`);
   }
 }
